@@ -18,7 +18,7 @@ python test_jingjian.py  --dataset_dir ./data/training_data_example --weights_pa
 Enet论文阅读
 ======================================
 
-![](https://img-blog.csdn.net/20170328161948506?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemlqaW54dXh1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![](https://pic2.zhimg.com/80/v2-b7f8d494d2777b64a999faff07effe4e_hd.jpg)
 
 ![](https://img-blog.csdn.net/20170328162004865?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemlqaW54dXh1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 

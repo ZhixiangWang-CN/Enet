@@ -1,5 +1,20 @@
 # Enet
 
+运行命令
+======================================
+
+训练:
+
+python train_jingjian.py 
+
+继续训练:
+
+python train_jingjian.py --weights_path model/culane_lanenet/culane_lanenet_enet_2018-10-23-18-27-58.ckpt-105600
+
+测试
+python test_jingjian.py  --dataset_dir ./data/training_data_example --weights_path model/culane_lanenet/culane_lanenet_enet_2018-10-23-18-27-58.ckpt-105600
+
+
 Enet论文阅读
 ======================================
 

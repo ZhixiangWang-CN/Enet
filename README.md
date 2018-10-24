@@ -13,7 +13,13 @@ Enet论文阅读
 
 ![](https://pic3.zhimg.com/80/v2-0a7016d069c25a1aa65384349d9d24ee_hd.png)
 
+
+
+
+
+
 lossfunction-lanenet：
+------------------------------------------------
 
 交叉熵损失函数：
 
@@ -53,5 +59,31 @@ lossfunction-lanenet：
 二、偏导值。
 
 其中，学习率是我们需要设置的超参数，所以我们重点关注偏导值。从上面的式子中，我们发现，偏导值的大小取决于 x_i 和 [sigma(y_i)-y_i] ，我们重点关注后者，后者的大小值反映了我们模型的错误程度，该值越大，说明模型效果越差，但是该值越大同时也会使得偏导值越大，从而模型学习速度更快。所以，使用逻辑函数得到概率，并结合交叉熵当损失函数时，在模型效果差的时候学习速度比较快，在模型效果好的时候学习速度变慢。
+
+代码中:
+-------------------
+
+loss = tf.nn.sparse_softmax_cross_entropy_with_logits(
+                logits=decode_logits, labels=tf.squeeze(label, axis=[3]),
+                name='entropy_loss')
+                
+[TensorFlow关于tf.nn.sparse_softmax_cross_entropy_with_logits（）](https://blog.csdn.net/ZJRN1027/article/details/80199248)
+
+
+第一步：Softmax:
+
+输出每个类占总类的概率
+
+![](https://pic4.zhimg.com/75938cc54604077d2ed193e97a5302bb_b.jpg)
+
+[Softmax 函数的特点和作用是什么？ - 忆臻的回答 - 知乎](https://www.zhihu.com/question/23765351/answer/240869755)
+
+
+
+![](https://img-blog.csdn.net/20180504192857468?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1pKUk4xMDI3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
+第二步：计算Cross-Entropy:
+
+![](https://img-blog.csdn.net/20180504201531230?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1pKUk4xMDI3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 

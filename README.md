@@ -107,17 +107,35 @@ loss = tf.losses.softmax_cross_entropy(onehot_labels=onehot_labels, logits=logit
 
 输出道路点的位置在:
 
-out_logits = compute_ret['binary_seg_logits'] #判断为道路的点
+out_logits = compute_ret['binary_seg_logits'] #判断为道路的点,shape(4,256,512,2)
 
-out_logits = tf.nn.softmax(logits=out_logits)#进行softmax变换,得到每个点的是道路的概率
+out_logitss = tf.nn.softmax(logits=out_logits)#进行softmax变换,得到每个点的是道路和背景的概率,shape(4,256,512,2)
 
-out_logits_out = tf.argmax(out_logits, axis=-1)
+out_logits_out = tf.argmax(out_logitss, axis=-1)#shape(4,256,512,1) [最后一位表示最后找到的最大的标签的位置是0 还是1 如果是0 就是背景,如果是1就是道路,正好会显示为二值图]
+
+print('out_logits',out_logits[0][0][0])
+
+print('out_logitss',out_logitss[0][0][0])
+
+print('out_logits_out',binary_seg_img[0][0][0])
+
+
+输出:
+
+out_logits [0.1682797 0.346079 ]
+out_logitss [0.4556669 0.5443331]
+out_logits_out 1
+
+
+
 
 [tf.argmax()以及axis解析](https://blog.csdn.net/qq575379110/article/details/70538051)
 
 按行或列输出矩阵最大值的坐标,0是按列,1是按行,
 
-##### -1 代表什么???????????????????????????????
+##### -1 代表什么???????????????????
+
+个人猜测,找最后一个维度的最大的标签
 
 
 

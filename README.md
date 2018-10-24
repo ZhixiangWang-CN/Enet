@@ -20,7 +20,7 @@ Enet论文阅读
 
 ![](https://pic2.zhimg.com/80/v2-b7f8d494d2777b64a999faff07effe4e_hd.jpg)
 
-![](https://img-blog.csdn.net/20170328162004865?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemlqaW54dXh1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![](https://pic4.zhimg.com/80/v2-870fd241940d9a8d2cb1d82537f37778_hd.jpg)
 
 
 因为此代码是基于lanenet网络改进的，所以需要先了解lanenet网络的一些基本参数：

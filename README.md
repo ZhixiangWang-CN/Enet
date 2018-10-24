@@ -123,7 +123,9 @@ print('out_logits_out',binary_seg_img[0][0][0])
 输出:
 
 out_logits [0.1682797 0.346079 ]
+
 out_logitss [0.4556669 0.5443331]
+
 out_logits_out 1
 
 

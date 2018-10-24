@@ -1,0 +1,2 @@
+model_checkpoint_path: "culane_lanenet_enet_2018-10-24-17-29-41.ckpt-0"
+all_model_checkpoint_paths: "culane_lanenet_enet_2018-10-24-17-29-41.ckpt-0"

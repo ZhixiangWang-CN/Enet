@@ -18,6 +18,9 @@ python test_jingjian.py  --dataset_dir ./data/training_data_example --weights_pa
 Enet论文阅读
 ======================================
 
+
+[Semantic Segmentation--ENet:A Deep Neural Network Architecture for Real-Time Semantic..论文解读](https://blog.csdn.net/u011974639/article/details/78956380)
+
 ![](https://pic2.zhimg.com/80/v2-b7f8d494d2777b64a999faff07effe4e_hd.jpg)
 
 ![](https://pic4.zhimg.com/80/v2-870fd241940d9a8d2cb1d82537f37778_hd.jpg)

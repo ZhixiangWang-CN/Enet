@@ -18,8 +18,11 @@ Enet论文阅读
 
 
 
-lossfunction-lanenet：
+lossfunction：
 ------------------------------------------------
+
+[TensorFlow四种Cross Entropy算法实现和应用 ](http://dataunion.org/26447.html)
+
 
 交叉熵损失函数：
 
@@ -63,11 +66,18 @@ lossfunction-lanenet：
 代码中:
 -------------------
 
+##### [lanenet]
+
 loss = tf.nn.sparse_softmax_cross_entropy_with_logits(
                 logits=decode_logits, labels=tf.squeeze(label, axis=[3]),
                 name='entropy_loss')
                 
 [TensorFlow关于tf.nn.sparse_softmax_cross_entropy_with_logits（）](https://blog.csdn.net/ZJRN1027/article/details/80199248)
+
+[	tf.nn.softmax_cross_entropy_with_logits中的“logits”到底是个什么意思？](https://blog.csdn.net/yhily2008/article/details/80262321)
+
+参数logits，logit本身就是是一种函数，它把某个概率p从[0,1]映射到[-inf,+inf]（即正负无穷区间）。这个函数的形式化描述为：logit=ln(p/(1-p))。
+我们可以把logist理解为原生态的、未经缩放的，可视为一种未归一化的log 概率，如是[4, 1, -2],简单来讲,就是得到预测的概率每归一化
 
 
 第一步：Softmax:
@@ -84,6 +94,29 @@ loss = tf.nn.sparse_softmax_cross_entropy_with_logits(
 
 第二步：计算Cross-Entropy:
 
+神经网络的输出层经过Softmax函数作用后，接下来就要计算我们的loss了，这个这里是使用了Cross-Entropy作为了loss function。由于tf.nn.sparse_softmax_cross_entropy_with_logits()输入的label格式为一维的向量，所以首先需要将其转化为one-hot格式的编码，例如如果分量为3，代表该样本属于第三类，其对应的one-hot格式label为[0，0，0，1，.......0]，而如果你的label已经是one-hot格式，则可以使用tf.nn.softmax_cross_entropy_with_logits()函数来进行softmax和loss的计算。
+
+
 ![](https://img-blog.csdn.net/20180504201531230?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1pKUk4xMDI3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
+##### [Enet]
+
+loss = tf.losses.softmax_cross_entropy(onehot_labels=onehot_labels, logits=logits, weights=weights)
+
+
+
+输出道路点的位置在:
+
+out_logits = compute_ret['binary_seg_logits'] #判断为道路的点
+
+out_logits = tf.nn.softmax(logits=out_logits)#进行softmax变换,得到每个点的是道路的概率
+
+out_logits_out = tf.argmax(out_logits, axis=-1)
+
+[tf.argmax()以及axis解析](https://blog.csdn.net/qq575379110/article/details/70538051)
+
+按行或列输出矩阵最大值的坐标,0是按列,1是按行
+
+
 
 

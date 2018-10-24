@@ -154,6 +154,154 @@ out_logits_out 1
 
 个人猜测,找最后一个维度的最大的标签
 
+###### 代码阅读
+
+
+
+train_jingjian.py
+
+```
+  
+   net = lanenet_merge_model.LaneNet(early_drop_prob=early_drop_prob, later_drop_prob=later_drop_prob,
+                                      net_flag=net_flag, phase=phase)
+                                      
+   compute_ret = net.compute_loss(input_tensor=input_tensor, binary_label=binary_label,
+                                   instance_label=instance_label, name='lanenet_loss')
+```
+     
+lanenet_merge_model.py
+
+```
+def compute_loss(self, input_tensor, binary_label, instance_label, name):
+    seg = LaneNetBinarySeg(early_drop_prob=self.early_drop_prob_ph, later_drop_prob=self.later_drop_prob_ph,
+                                   phase=self._phase, net_flag=self._net_flag)
+                                   
+    seg_loss = seg.compute_loss(input_tensor=input_tensor, label=binary_label, name=name+'_seg_loss')
+                                   
+```
+
+lanenet_binary_segmentation.py
+
+```
+
+class LaneNetBinarySeg(cnn_basenet.CNNBaseModel):
+    def __init__(self, early_drop_prob, later_drop_prob, phase, net_flag='enet'):
+        elif self._net_flag == "enet":
+            self._encoder = enet_encoder.Enet_encoder(phase=phase)
+            
+        # choose decode model according to encode model
+                elif self._net_flag == 'enet':
+            self._decoder = enet_decoder.Enet_decoder()
+
+        self.early_drop_prob_ph = early_drop_prob
+        self.later_drop_prob_ph = later_drop_prob
+
+      def compute_loss(self, input_tensor, label, name):
+      
+          inference_ret = self.build_model(input_tensor=input_tensor, name='inference') #开始搭建网络\
+      
+      def build_model(self, input_tensor, name):
+          # first encode
+            # 当选择其他encoder时，修改传递参数
+            encode_ret, network,\
+            inputs_shape_1, \
+            pooling_indices_1, \
+            inputs_shape_2, \
+            pooling_indices_2 = self._encoder.encode(input_tensor=input_tensor,
+                                                     early_drop_prob=self.early_drop_prob_ph,
+                                                     later_drop_prob=self.later_drop_prob_ph,
+                                                     scope='encode')
+                                                     
+              elif self._net_flag.lower() == 'enet':
+                decode_ret = self._decoder.decode_seg(input_tensor=network,
+                                                      later_drop_prob=self.later_drop_prob_ph,
+                                                      pooling_indices_1=pooling_indices_1,
+                                                      pooling_indices_2=pooling_indices_2, scope="decode")
+
+```
+
+enet_decoder.py
+
+```
+def decode_seg(self, input_tensor, later_drop_prob,
+                   pooling_indices_1, pooling_indices_2, scope):
+             # Encoder_3_seg
+            network_seg = self.encoder_bottleneck_regular(x=input_tensor, output_depth=128,
+                                                          drop_prob=later_drop_prob,
+                                                          scope="seg_bottleneck_3_1")
+    
+            network_seg = self.encoder_bottleneck_dilated(x=network_seg, output_depth=128,
+                                                          drop_prob=later_drop_prob,
+                                                          scope="seg_bottleneck_3_2", dilation_rate=2)
+    
+            network_seg = self.encoder_bottleneck_asymmetric(x=network_seg, output_depth=128,
+                                                             drop_prob=later_drop_prob,
+                                                             scope="seg_bottleneck_3_3")
+    
+            network_seg = self.encoder_bottleneck_dilated(x=network_seg, output_depth=128,
+                                                          drop_prob=later_drop_prob,
+                                                          scope="seg_bottleneck_3_4", dilation_rate=4)
+    
+            network_seg = self.encoder_bottleneck_regular(x=network_seg, output_depth=128,
+                                                          drop_prob=later_drop_prob,
+                                                          scope="seg_bottleneck_3_5")
+    
+            network_seg = self.encoder_bottleneck_dilated(x=network_seg, output_depth=128,
+                                                          drop_prob=later_drop_prob,
+                                                          scope="seg_bottleneck_3_6", dilation_rate=8)
+    
+            network_seg = self.encoder_bottleneck_asymmetric(x=network_seg, output_depth=128,
+                                                             drop_prob=later_drop_prob,
+                                                             scope="seg_bottleneck_3_7")
+    
+            network_seg = self.encoder_bottleneck_dilated(x=network_seg, output_depth=128,
+                                                          drop_prob=later_drop_prob,
+                                                          scope="seg_bottleneck_3_8", dilation_rate=16)
+            ret['stage3_seg'] = dict()
+            ret['stage3_seg']['data'] = network_seg
+            ret['stage3_seg']['shape'] = network_seg.get_shape().as_list()
+    
+            # decoder
+            # # Decoder_1_seg
+            network_seg = self.decoder_bottleneck(x=network_seg, output_depth=64,
+                                                  scope="seg_bottleneck_4_0", upsampling=True,
+                                                  pooling_indices=pooling_indices_2)
+    
+            network_seg = self.decoder_bottleneck(x=network_seg, output_depth=64,
+                                                  scope="seg_bottleneck_4_1")
+    
+            network_seg = self.decoder_bottleneck(x=network_seg, output_depth=64,
+                                                  scope="seg_bottleneck_4_2")
+    
+            ret['stage4_seg'] = dict()
+            ret['stage4_seg']['data'] = network_seg
+            ret['stage4_seg']['shape'] = network_seg.get_shape().as_list()
+    
+            # # Decoder_2_seg
+            network_seg = self.decoder_bottleneck(x=network_seg, output_depth=16,
+                                                  scope="seg_bottleneck_5_0", upsampling=True,
+                                                  pooling_indices=pooling_indices_1)
+    
+            network_seg = self.decoder_bottleneck(x=network_seg, output_depth=16,
+                                                  scope="seg_bottleneck_5_1")
+    
+            ret['stage5_seg'] = dict()
+            ret['stage5_seg']['data'] = network_seg
+            ret['stage5_seg']['shape'] = network_seg.get_shape().as_list()
+    
+            # segmentation
+            # # arg[1] = 2:  in semantic segmentation branch
+            # # arg[1] = 3: in embedding branch
+            network_seg = tf.contrib.slim.conv2d_transpose(network_seg, 2,
+                                                           [2, 2], stride=2, scope="seg_fullconv", padding="SAME")
+            print("output = %s" % network_seg.get_shape().as_list())
+            ret['fullconv_seg'] = dict()
+            ret['fullconv_seg']['data'] = network_seg#输出的二值分割图像
+            ret['fullconv_seg']['shape'] = network_seg.get_shape().as_list()
+    
+            return ret
+```
+
 
 
 

@@ -130,6 +130,7 @@ rate = 2 的 3*3空洞卷积
 
 [为什么非对称卷积（Asymmetric Convolution）减少了运算量?](https://www.zhihu.com/question/270055683)
 
+![](https://github.com/greenfishflying/Enet/blob/master/images/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8D%B7%E7%A7%AF%E8%AE%A1%E7%AE%97.jpg)
 
 ```
 import tensorflow as tf

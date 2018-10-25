@@ -184,6 +184,14 @@ unpooling:
 左边为pooling 右边为unpooling
 
 ![](https://pic4.zhimg.com/v2-d39bbce090ad22a219b0e6b91953cd7b_b.png)
+
+![](https://img-blog.csdn.net/20180127154813206?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQV9hX3Jvbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+unsampling上采样:
+
+![](https://img-blog.csdn.net/20180127154813206?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQV9hX3Jvbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
 代码中:
 -------------------
 

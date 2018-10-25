@@ -54,6 +54,15 @@ ShuffleNet的工作是推广群卷积(group convolution)和深度可分卷积(de
 [轻量化网络ShuffleNet MobileNet v1/v2 解析](https://zhuanlan.zhihu.com/p/35405071)
 
 
+通过这几篇论文的创新点，得出以下可认为是发 (Shui) 论文的 idea：
+
+1. 采用 depth-wise convolution，再设计一个方法解决「信息流通不畅」问题，然后冠以美名 XX-Net。（看看 ShuffleNet 就是）
+
+2. 针对 depth-wise convolution 作文章，卷积方式不是千奇百怪么？各种卷积方式可参考 Github（https://github.com/vdumoulin/conv_arithmetic），挑一个或者几个，结合起来，只要参数量少，实验效果好，就可以发 (Shui) 论文。
+
+3. 接着第 2，如果设计出来一个新的卷积方式，如果也存在一些「副作用」，再想一个方法解决这个副作用，再美其名曰 XX-Net。就是自己「挖」个坑，自己再填上去。
+
+
 ###### shuffleNet:
 
 [轻量级网络--ShuffleNet论文解读](https://blog.csdn.net/u011974639/article/details/79200559)

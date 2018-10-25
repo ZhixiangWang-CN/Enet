@@ -37,6 +37,10 @@ shuffle net
 
 ![](https://pic4.zhimg.com/80/v2-f3c061509b3b9e96f5fc400a9ea26522_hd.jpg)
 
+![](https://pic2.zhimg.com/80/v2-15e27880d3b1c562af7b4080dfac3739_hd.jpg)
+
+[卷积神经网络结构演变（form Hubel and Wiesel to SENet）——学习总结，文末附参考论文](https://zhuanlan.zhihu.com/p/34621135)
+
 高效模型设计： 
 
 CNNs在CV任务中取得了极大的成功，在嵌入式设备上运行高质量深度神经网络需求越来越大，这也促进了对高效模型的探究。
@@ -64,6 +68,10 @@ ShuffleNet的工作是推广群卷积(group convolution)和深度可分卷积(de
 
 3. 接着第 2，如果设计出来一个新的卷积方式，如果也存在一些「副作用」，再想一个方法解决这个副作用，再美其名曰 XX-Net。就是自己「挖」个坑，自己再填上去。
 
+ResNet的核心：
+一堆网络的集合，有浅有深
+
+![](https://pic3.zhimg.com/v2-1081c92e6f695c20df034cff68e565dc_r.jpg)
 
 ###### shuffleNet:
 

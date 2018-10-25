@@ -50,6 +50,23 @@ ShuffleNet的工作是推广群卷积(group convolution)和深度可分卷积(de
 [轻量化网络ShuffleNet MobileNet v1/v2 解析](https://zhuanlan.zhihu.com/p/35405071)
 
 
+###### shuffleNet:
+
+[轻量级网络--ShuffleNet论文解读](https://blog.csdn.net/u011974639/article/details/79200559)
+
+核心：
+featuremap通道分组进行卷积，减少计算量。
+
+![](https://pic3.zhimg.com/80/v2-c64110d20c8204affb88d79ec67b75f7_hd.jpg)
+
+![](http://owv7la1di.bkt.clouddn.com/blog/180129/lj9IK1cm9H.png)
+
+![](https://pic2.zhimg.com/80/v2-de3847209089b598bf2a227924f77f5f_hd.jpg)
+
+上面的a是普通的ResNet结构，而b是ShuffleNet结构，可以看到，具体实现上，是先经过1x1通道分组卷积，然后通道重排，再3x3空间上的depthwise convolution，然后再经过一个1x1的通道分组卷积。图c是要进行降维时候的结构，stride为2，旁边的shortcut也变为stride 2的平均池化。
+
+![](https://pic1.zhimg.com/80/v2-5a81d1bb186b32aad32b638b26a17043_hd.jpg)
+
 
 
 Enet论文阅读

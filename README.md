@@ -96,6 +96,8 @@ lossfunction：
 空洞卷积
 ------------------------------------
 
+空洞卷积:既不缩小数据大小,还能够增大其感受野,之前只有downpooling的方法
+
 [Tensorflow】tf.nn.atrous_conv2d如何实现空洞卷积？](https://blog.csdn.net/mao_xiao_feng/article/details/78003730)
 
 tf.nn.atrous_conv2d(value,filters,rate,padding,name=None）
@@ -118,6 +120,36 @@ tf.nn.atrous_conv2d(value,filters,rate,padding,name=None）
 rate = 2 的 3*3空洞卷积
 
 ![](https://upload-images.jianshu.io/upload_images/207577-4ba7cf60bf5476f5.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/395)
+
+非对称卷积Asymmetric Convolutions:
+-------------------------------
+
+![](https://pic3.zhimg.com/v2-e03eb40cd8d82ad40e943ad26644fc5a_b.jpg)
+
+![](https://pic2.zhimg.com/80/v2-f0b49e7c24119ae8b4f5dd6d9170bf05_hd.jpg)
+
+[为什么非对称卷积（Asymmetric Convolution）减少了运算量?](https://www.zhihu.com/question/270055683)
+
+
+```
+import tensorflow as tf
+x = tf.Variable(tf.ones([1, 4, 4, 1]))
+w = tf.Variable(tf.ones([3, 1, 1, 1]))
+w2 = tf.Variable(tf.ones([1, 3, 1, 1]))
+w3 = tf.Variable(tf.ones([3, 3, 1, 1]))
+output = tf.nn.conv2d(x, w, strides=[1, 1, 1, 1], padding='SAME')
+output2 = tf.nn.conv2d(output, w2, strides=[1, 1, 1, 1], padding='SAME')
+output3 = tf.nn.conv2d(x, w3, strides=[1, 1, 1, 1], padding='SAME')
+init = tf.initialize_all_variables()
+sess = tf.Session()
+sess.run(init)
+print("output",sess.run(output))
+print("output2",sess.run(output2))
+print("output3",sess.run(output3))
+print("w",sess.run(w))
+print("w2",sess.run(w2))
+print("w3",sess.run(w3))
+```
 
 pool层(效果等同与步长为2的卷积)
 --------------------------------

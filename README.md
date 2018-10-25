@@ -160,7 +160,245 @@ out_logits_out 1
 
 ###### 代码阅读
 
+整个网络的参数变化:
 
+```
+build modelllllllll inggggggggggggggggggggggggg
+################ initial block
+===============initial block
+======x [4, 256, 512, 3]
+======conv_branch [4, 128, 256, 13]
+======pool_branch [4, 128, 256, 3]
+======concat [4, 128, 256, 16]
+======output [4, 128, 256, 16]
+===================================
+initial_output = [4, 128, 256, 16]
+################ Encoder_1
+inputs_stage_1 = [4, 128, 256, 16]
+===============encoder_bottleneck_regular
+======input_shape [4, 128, 256, 16]
+======conv_branch (downsampling)  [4, 64, 128, 4]
+======convolution [4, 64, 128, 4]
+======1x1 expansion [4, 64, 128, 64]
+======main_branch(downsampling) [4, 64, 128, 64]
+======add the branchs [4, 64, 128, 64]
+======output [4, 64, 128, 64]
+output_1st_downsample = [4, 64, 128, 64]
+pooling_indeces_1 = [4, 64, 128, 16]
+===============encoder_bottleneck_regular
+======input_shape [4, 64, 128, 64]
+======conv_branch [4, 64, 128, 16]
+======convolution [4, 64, 128, 16]
+======1x1 expansion [4, 64, 128, 64]
+======add the branchs [4, 64, 128, 64]
+======output [4, 64, 128, 64]
+===============encoder_bottleneck_regular
+======input_shape [4, 64, 128, 64]
+======conv_branch [4, 64, 128, 16]
+======convolution [4, 64, 128, 16]
+======1x1 expansion [4, 64, 128, 64]
+======add the branchs [4, 64, 128, 64]
+======output [4, 64, 128, 64]
+===============encoder_bottleneck_regular
+======input_shape [4, 64, 128, 64]
+======conv_branch [4, 64, 128, 16]
+======convolution [4, 64, 128, 16]
+======1x1 expansion [4, 64, 128, 64]
+======add the branchs [4, 64, 128, 64]
+======output [4, 64, 128, 64]
+===============encoder_bottleneck_regular
+======input_shape [4, 64, 128, 64]
+======conv_branch [4, 64, 128, 16]
+======convolution [4, 64, 128, 16]
+======1x1 expansion [4, 64, 128, 64]
+======add the branchs [4, 64, 128, 64]
+======output [4, 64, 128, 64]
+################ Encoder_2
+inputs_stage_2 = [4, 64, 128, 64]
+===============encoder_bottleneck_regular
+======input_shape [4, 64, 128, 64]
+======conv_branch (downsampling)  [4, 32, 64, 16]
+======convolution [4, 32, 64, 16]
+======1x1 expansion [4, 32, 64, 128]
+======main_branch(downsampling) [4, 32, 64, 128]
+======add the branchs [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+output_2nd_downsample = [4, 32, 64, 128]
+pooling_indices_2 = [4, 32, 64, 64]
+===============encoder_bottleneck_regular
+======input_shape [4, 32, 64, 128]
+======conv_branch [4, 32, 64, 32]
+======convolution [4, 32, 64, 32]
+======1x1 expansion [4, 32, 64, 128]
+======add the branchs [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_dilated
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======dilated conv [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======main branch [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_asymmetric
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======asymmetric conv [4, 32, 64, 32]
+======asymmetric conv2 [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_dilated
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======dilated conv [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======main branch [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+===============encoder_bottleneck_regular
+======input_shape [4, 32, 64, 128]
+======conv_branch [4, 32, 64, 32]
+======convolution [4, 32, 64, 32]
+======1x1 expansion [4, 32, 64, 128]
+======add the branchs [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_dilated
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======dilated conv [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======main branch [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_asymmetric
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======asymmetric conv [4, 32, 64, 32]
+======asymmetric conv2 [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_dilated
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======dilated conv [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======main branch [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+####### Encoder_3_seg
+===============encoder_bottleneck_regular
+======input_shape [4, 32, 64, 128]
+======conv_branch [4, 32, 64, 32]
+======convolution [4, 32, 64, 32]
+======1x1 expansion [4, 32, 64, 128]
+======add the branchs [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_dilated
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======dilated conv [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======main branch [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_asymmetric
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======asymmetric conv [4, 32, 64, 32]
+======asymmetric conv2 [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_dilated
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======dilated conv [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======main branch [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+===============encoder_bottleneck_regular
+======input_shape [4, 32, 64, 128]
+======conv_branch [4, 32, 64, 32]
+======convolution [4, 32, 64, 32]
+======1x1 expansion [4, 32, 64, 128]
+======add the branchs [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_dilated
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======dilated conv [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======main branch [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_asymmetric
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======asymmetric conv [4, 32, 64, 32]
+======asymmetric conv2 [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+encoder_bottleneck_dilated
+======input_shape [4, 32, 64, 128]
+======1x1 projection [4, 32, 64, 32]
+======dilated conv [4, 32, 64, 32]
+======1x1 projection [4, 32, 64, 128]
+======main branch [4, 32, 64, 128]
+======merge the branches [4, 32, 64, 128]
+======output [4, 32, 64, 128]
+#######  # # Decoder_1_seg
+decoder_bottleneck
+======input_shape [4, 32, 64, 128]
+======# 1x1 projection (upsampling) [4, 32, 64, 64]
+======# max unpooling [4, 64, 128, 64]
+======# conv branch  [4, 32, 64, 128]
+======# # 1x1 projection  [4, 32, 64, 32]
+======# # conv upsampling  [4, 64, 128, 32]
+====== # # 1x1 expansion   [4, 64, 128, 64]
+====== # #add the batches   [4, 64, 128, 64]
+====== # # output   [4, 64, 128, 64]
+decoder_bottleneck
+======input_shape [4, 64, 128, 64]
+======# conv branch  [4, 64, 128, 64]
+======# # 1x1 projection  [4, 64, 128, 16]
+======# # conv   [4, 64, 128, 16]
+====== # # 1x1 expansion   [4, 64, 128, 64]
+====== # #add the batches   [4, 64, 128, 64]
+====== # # output   [4, 64, 128, 64]
+decoder_bottleneck
+======input_shape [4, 64, 128, 64]
+======# conv branch  [4, 64, 128, 64]
+======# # 1x1 projection  [4, 64, 128, 16]
+======# # conv   [4, 64, 128, 16]
+====== # # 1x1 expansion   [4, 64, 128, 64]
+====== # #add the batches   [4, 64, 128, 64]
+====== # # output   [4, 64, 128, 64]
+#######  # # Decoder_2_seg
+decoder_bottleneck
+======input_shape [4, 64, 128, 64]
+======# 1x1 projection (upsampling) [4, 64, 128, 16]
+======# max unpooling [4, 128, 256, 16]
+======# conv branch  [4, 64, 128, 64]
+======# # 1x1 projection  [4, 64, 128, 16]
+======# # conv upsampling  [4, 128, 256, 16]
+====== # # 1x1 expansion   [4, 128, 256, 16]
+====== # #add the batches   [4, 128, 256, 16]
+====== # # output   [4, 128, 256, 16]
+decoder_bottleneck
+======input_shape [4, 128, 256, 16]
+======# conv branch  [4, 128, 256, 16]
+======# # 1x1 projection  [4, 128, 256, 4]
+======# # conv   [4, 128, 256, 4]
+====== # # 1x1 expansion   [4, 128, 256, 16]
+====== # #add the batches   [4, 128, 256, 16]
+====== # # output   [4, 128, 256, 16]
+################ total output = [4, 256, 512, 2]
+
+```
 
 train_jingjian.py
 
@@ -223,7 +461,19 @@ class LaneNetBinarySeg(cnn_basenet.CNNBaseModel):
                                                       pooling_indices_2=pooling_indices_2, scope="decode")
 
 ```
+enet_encoder.py
+```
+def encode(self, input_tensor, early_drop_prob, later_drop_prob, scope):
 
+    network = self.initial_block(x=input_tensor, scope="initial")
+    
+    # # Encoder_1
+    ....
+    # # Encoder_2
+    ....
+
+
+```
 enet_decoder.py
 
 ```
@@ -306,6 +556,43 @@ def decode_seg(self, input_tensor, later_drop_prob,
             return ret
 ```
 
+Enet.py 
+
+```
+def initial_block(self, x, scope):
+# convolution branch
+        print("===============initial block")
+        print("======x", x.get_shape().as_list())
+        W_conv = self.get_variable_weight_decay(scope + "/W", shape=[3, 3, 3, 13],
+                                                initializer=tf.contrib.layers.xavier_initializer(),
+                                                loss_category="encoder_wd_loss")#13个卷积核,3*3,4张图片
+        b_conv = self.get_variable_weight_decay(scope + "/b", shape=[13],
+                                                initializer=tf.constant_initializer(0),
+                                                loss_category="encoder_wd_loss")
+        conv_branch = tf.nn.conv2d(x, W_conv, strides=[1, 2, 2, 1], padding="SAME") + b_conv
+        print("======conv_branch", conv_branch.get_shape().as_list())#卷积后
+        # maxpooling branch
+        pool_branch = tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding="VALID")
+        print("======pool_branch",pool_branch.get_shape().as_list())#池化后
+        # cancatenate these two branches
+        concat = tf.concat([conv_branch, pool_branch], axis=3)  # (3: the depth axis)
+        print("======concat", concat.get_shape().as_list())#直接将卷积和池化拼在了一起
+        # apply BN and PReLU
+        output = tf.contrib.slim.batch_norm(concat)
+        print("======output", output.get_shape().as_list())
+        output = self.PReLU(output, scope=scope)
+        print("===================================")
+
+        return output
 
 
+输出:
+
+======x [4, 256, 512, 3]
+======conv_branch [4, 128, 256, 13]
+======pool_branch [4, 128, 256, 3]
+======concat [4, 128, 256, 16]
+======output [4, 128, 256, 16]
+
+```
 

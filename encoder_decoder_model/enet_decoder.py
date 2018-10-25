@@ -30,6 +30,7 @@ class Enet_decoder(Enet_model):
         with tf.variable_scope(scope):
             
             # Encoder_3_seg
+            print("####### Encoder_3_seg")
             network_seg = self.encoder_bottleneck_regular(x=input_tensor, output_depth=128,
                                                           drop_prob=later_drop_prob,
                                                           scope="seg_bottleneck_3_1")
@@ -67,6 +68,7 @@ class Enet_decoder(Enet_model):
     
             # decoder
             # # Decoder_1_seg
+            print("#######  # # Decoder_1_seg")
             network_seg = self.decoder_bottleneck(x=network_seg, output_depth=64,
                                                   scope="seg_bottleneck_4_0", upsampling=True,
                                                   pooling_indices=pooling_indices_2)
@@ -82,6 +84,7 @@ class Enet_decoder(Enet_model):
             ret['stage4_seg']['shape'] = network_seg.get_shape().as_list()
     
             # # Decoder_2_seg
+            print("#######  # # Decoder_2_seg")
             network_seg = self.decoder_bottleneck(x=network_seg, output_depth=16,
                                                   scope="seg_bottleneck_5_0", upsampling=True,
                                                   pooling_indices=pooling_indices_1)
@@ -98,7 +101,7 @@ class Enet_decoder(Enet_model):
             # # arg[1] = 3: in embedding branch
             network_seg = tf.contrib.slim.conv2d_transpose(network_seg, 2,
                                                            [2, 2], stride=2, scope="seg_fullconv", padding="SAME")
-            print("output = %s" % network_seg.get_shape().as_list())
+            print("################ total output = %s" % network_seg.get_shape().as_list())
             ret['fullconv_seg'] = dict()
             ret['fullconv_seg']['data'] = network_seg#输出的二值分割图像
             ret['fullconv_seg']['shape'] = network_seg.get_shape().as_list()

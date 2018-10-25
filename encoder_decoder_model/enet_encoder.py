@@ -50,13 +50,16 @@ class Enet_encoder(Enet_model):
             # encoder
             # # initial block
             # network = self()
+            print("################ initial block")
             network = self.initial_block(x=input_tensor, scope="initial")
+
             ret['initial'] = dict()
             ret['initial']['data'] = network
             ret['initial']['shape'] = network.get_shape().as_list()
             print('initial_output = %s' % network.get_shape().as_list())
 
             # # Encoder_1
+            print("################ Encoder_1")
             # # # save the input shape to use in max_unpool in the decoder
             inputs_shape_1 = network.get_shape().as_list()
             print("inputs_stage_1 = %s" % inputs_shape_1)
@@ -87,6 +90,7 @@ class Enet_encoder(Enet_model):
             ret['stage_1']['shape'] = network.get_shape().as_list()
 
             # # Encoder_2
+            print("################ Encoder_2")
             # # # save the input shape to use in max_pool in the decoder
             inputs_shape_2 = network.get_shape().as_list()
             print("inputs_stage_2 = %s" % inputs_shape_2)

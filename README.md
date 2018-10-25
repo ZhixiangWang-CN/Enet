@@ -47,6 +47,8 @@ MobileNet利用深度可分卷积构建的轻量级模型获得了先进的成�
 
 ShuffleNet的工作是推广群卷积(group convolution)和深度可分卷积(depthwise separable convolution)。
 
+![](https://pic4.zhimg.com/80/v2-9d9bdea7ca7039165ca875d774aefa4e_hd.jpg)
+
 [轻量化网络ShuffleNet MobileNet v1/v2 解析](https://zhuanlan.zhihu.com/p/35405071)
 
 

@@ -23,6 +23,10 @@ python test_jingjian.py  --dataset_dir ./data/training_data_example --weights_pa
 
 更准
 
+网络结构的优化:
+
+卷积运算方式,bottleneck设计,添加或删除不同的层
+
 shuffle net
 
 

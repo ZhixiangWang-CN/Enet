@@ -35,6 +35,8 @@ shuffle net
 
 [各种卷积总结](https://github.com/vdumoulin/conv_arithmetic)
 
+![](https://pic4.zhimg.com/80/v2-f3c061509b3b9e96f5fc400a9ea26522_hd.jpg)
+
 高效模型设计： 
 
 CNNs在CV任务中取得了极大的成功，在嵌入式设备上运行高质量深度神经网络需求越来越大，这也促进了对高效模型的探究。

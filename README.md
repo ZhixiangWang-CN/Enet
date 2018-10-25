@@ -117,7 +117,7 @@ tf.nn.atrous_conv2d(value,filters,rate,padding,name=None）
 
 rate = 2 的 3*3空洞卷积
 
-![](https://img-blog.csdn.net/20170916150115956?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbWFvX3hpYW9fZmVuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![](https://upload-images.jianshu.io/upload_images/207577-4ba7cf60bf5476f5.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/395)
 
 pool层(效果等同与步长为2的卷积)
 --------------------------------

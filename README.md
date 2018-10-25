@@ -94,6 +94,10 @@ featuremap通道分组进行卷积，减少计算量。
 
 将各通道赋予权重并训练
 
+BiSENET
+
+[论文阅读：BiSeNet: Bilateral Segmentation Network for Real-time Semantic Segmentation](https://www.jianshu.com/p/877a3f59f483?open_source=weibo_search)
+
 Enet论文阅读
 ======================================
 

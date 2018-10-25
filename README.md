@@ -31,6 +31,7 @@ shuffle net
 
 研究资料:
 ----------------------
+[CNN网络优化学习总结——从MobileNet到ShuffleNet](https://blog.csdn.net/sun_28/article/details/78170878)
 
 高效模型设计： 
 

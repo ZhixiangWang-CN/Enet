@@ -14,6 +14,17 @@ python train_jingjian.py --weights_path model/culane_lanenet/culane_lanenet_enet
 测试
 python test_jingjian.py  --dataset_dir ./data/training_data_example --weights_path model/culane_lanenet/culane_lanenet_enet_2018-10-23-18-27-58.ckpt-105600
 
+下一步方向：
+===========================================
+
+更快
+
+更小
+
+更准
+
+shuffle net
+
 
 Enet论文阅读
 ======================================

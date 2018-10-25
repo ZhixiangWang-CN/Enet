@@ -195,6 +195,15 @@ unsampling上采样:
 ![](https://img-blog.csdn.net/20180127154813206?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQV9hX3Jvbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 
+反卷积:
+----------------------------
+
+[理解tf.nn.conv2d和tf.nn.conv2d_transpose](https://www.jianshu.com/p/a897ed29a8a0)
+
+[](https://blog.csdn.net/panglinzhuo/article/details/75207855)
+
+![](http://deeplearning.net/software/theano_versions/dev/_images/same_padding_no_strides.gif)
+
 代码中:
 -------------------
 

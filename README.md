@@ -33,6 +33,8 @@ shuffle net
 ----------------------
 [CNN网络优化学习总结——从MobileNet到ShuffleNet](https://blog.csdn.net/sun_28/article/details/78170878)
 
+[各种卷积总结](https://github.com/vdumoulin/conv_arithmetic)
+
 高效模型设计： 
 
 CNNs在CV任务中取得了极大的成功，在嵌入式设备上运行高质量深度神经网络需求越来越大，这也促进了对高效模型的探究。

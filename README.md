@@ -29,6 +29,24 @@ python test_jingjian.py  --dataset_dir ./data/training_data_example --weights_pa
 
 shuffle net
 
+研究资料:
+----------------------
+
+高效模型设计： 
+
+CNNs在CV任务中取得了极大的成功，在嵌入式设备上运行高质量深度神经网络需求越来越大，这也促进了对高效模型的探究。
+
+例如，与单纯的堆叠卷积层，GoogleNet增加了网络的宽度，复杂度降低很多；
+
+SqueezeNet在保持精度的同时大大减少参数和计算量；
+
+ResNet利用高效的bottleneck结构实现惊人的效果。Xception中提出深度可分卷积概括了Inception序列。
+
+MobileNet利用深度可分卷积构建的轻量级模型获得了先进的成果；
+
+ShuffleNet的工作是推广群卷积(group convolution)和深度可分卷积(depthwise separable convolution)。
+
+
 
 Enet论文阅读
 ======================================

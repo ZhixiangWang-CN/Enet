@@ -29,6 +29,10 @@ python test_jingjian.py  --dataset_dir ./data/training_data_example --weights_pa
 
 shuffle net
 
+现在在做实验,将浅层的Enet转化为深层的encoder,用relu,效果还可以
+
+下一步想将每个浅层的网络赋予权重,并训练
+
 研究资料:
 ----------------------
 [CNN网络优化学习总结——从MobileNet到ShuffleNet](https://blog.csdn.net/sun_28/article/details/78170878)

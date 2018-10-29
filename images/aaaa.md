@@ -148,6 +148,8 @@ FN: false negative;
 
 [如何解释召回率与准确率？](https://www.zhihu.com/question/19645541)
 
+![](https://pic3.zhimg.com/80/d701da76199148837cfed83901cea99e_hd.png)
+
 
 
 lossfunction：

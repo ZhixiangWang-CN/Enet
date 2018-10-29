@@ -7,6 +7,9 @@
 
 python train_jingjian.py 
 
+tensorboard --logdir=./tboard
+
+
 继续训练:
 
 python train_jingjian.py --weights_path model/culane_lanenet/culane_lanenet_enet_2018-10-23-18-27-58.ckpt-105600

@@ -90,6 +90,18 @@ ResNet的核心：
 
 ![](https://pic3.zhimg.com/v2-1081c92e6f695c20df034cff68e565dc_r.jpg)
 
+
+从宽网络角度来分析 ResNet，的确解释了 [1] 中 lesion study，而且指明为什么 ResNet 在层数较深时能有较好的收敛率 —— 总有部分短路径远小于模型真正的深度。[2] 在 [1] 之后，进行了近一步的分析，指出带 Residual Connection 的深网络可以“近似地”看作宽模型，BUT，跟真正的宽模型还是不同的！Forward 时两者可以看做相同，但 backward 时有部分 gradient 路径无法联通。也就是说， ResNet 在回传 gradient 时，尚有提升的空间，这就是为什么 ResNeXt，Wide-ResNet 等文章能有提升的原因——因为 ResNet 并不是真正的宽模型 。
+
+![](https://pic2.zhimg.com/80/v2-0e44e8acf72d30ab961ca8b5ecb23c6d_hd.png)
+
+![](https://pic2.zhimg.com/80/v2-a37582245c4085c3e2df89b4c4f888ed_hd.png)
+###### ResNext:
+
+![](https://pic3.zhimg.com/80/v2-ee942d228efdaaff277c8a9a8b96a131_hd.jpg)
+
+左边是ResNet的基本结构，右边是ResNeXt的基本结构
+
 ###### shuffleNet:
 
 [轻量级网络--ShuffleNet论文解读](https://blog.csdn.net/u011974639/article/details/79200559)
@@ -109,7 +121,9 @@ featuremap通道分组进行卷积，减少计算量。
 
 ###### SENET
 
-将各通道赋予权重并训练
+将featuremaps各通道赋予权重并训练
+
+![](https://pic2.zhimg.com/v2-e02ddf911b562e18f8b6edf527c8fb75_b.jpg)
 
 BiSENET
 

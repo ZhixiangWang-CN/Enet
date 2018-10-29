@@ -14,7 +14,7 @@ python train_jingjian.py --weights_path model/culane_lanenet/culane_lanenet_enet
 测试
 python test_jingjian.py  --dataset_dir ./data/training_data_example --weights_path model/culane_lanenet/culane_lanenet_enet_2018-10-23-18-27-58.ckpt-105600
 
-下一步方向：
+[下一步方向：
 ===========================================
 
 更快
@@ -41,7 +41,7 @@ attention 机制
 
 现在在做实验,将浅层的Enet转化为深层的encoder,用relu,效果还可以
 
-下一步想将每个浅层的网络赋予权重,并训练
+下一步想将每个浅层的网络赋予权重,并训练]:
 
 研究资料:
 ----------------------
@@ -131,6 +131,22 @@ Enet论文阅读
 ![](http://owv7la1di.bkt.clouddn.com/blog/180102/Hb10AFHcJI.png)
 
 
+精确率与召回率等预测准确度计算:
+------------------------------------------------
+
+TP: true positive ;
+
+TN: true negative;
+
+FP: false positive;
+
+FN: false negative;
+
+这四个参数的误差用于计算许多种性能评估指标，用来评价分类器的性能（classifier）
+
+![](https://pic3.zhimg.com/80/v2-d9875e0306dae16aaea850afe9636745_hd.jpg)
+
+[如何解释召回率与准确率？](https://www.zhihu.com/question/19645541)
 
 
 

@@ -16,7 +16,7 @@ python test_jingjian.py  --dataset_dir ./data/training_data_example --weights_pa
 
 下一步方向：
 ===========================================
-[
+
 更快
 
 更小
@@ -41,7 +41,7 @@ attention 机制
 
 现在在做实验,将浅层的Enet转化为深层的encoder,用relu,效果还可以
 
-下一步想将每个浅层的网络赋予权重,并训练]:
+下一步想将每个浅层的网络赋予权重,并训练
 
 研究资料:
 ----------------------

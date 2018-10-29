@@ -150,7 +150,7 @@ FN: false negative;
 
 ![](https://pic3.zhimg.com/80/d701da76199148837cfed83901cea99e_hd.png)
 
-
+![](https://pic1.zhimg.com/80/v2-459293ee827f3467fab1179742b2a188_hd.jpg)
 
 lossfunction：
 ------------------------------------------------

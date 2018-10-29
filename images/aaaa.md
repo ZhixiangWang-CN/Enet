@@ -133,6 +133,7 @@ featuremap通道分组进行卷积，减少计算量。
 ###### IBN-Net
 
 [批量标准化(BN)、实例标准化(IN)、特征标准化(FN)](https://blog.csdn.net/mzpmzk/article/details/80043076)
+
 [BN与IN的对比](https://www.zhihu.com/question/68730628/answer/277339783)
 
 batch norm是对一个batch里所有的图片的所有像素求均值和标准差。而instance norm是对单个图片的所有像素求均值和标准差。

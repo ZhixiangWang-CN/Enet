@@ -136,9 +136,15 @@ featuremap通道分组进行卷积，减少计算量。
 
 [BN与IN的对比](https://www.zhihu.com/question/68730628/answer/277339783)
 
+
+[IBN-Net论文笔记](https://blog.csdn.net/sunyao_123/article/details/81294724)
+
+
 batch norm是对一个batch里所有的图片的所有像素求均值和标准差。而instance norm是对单个图片的所有像素求均值和标准差。
 
+IBN-Net能够学习捕获和消除外观的变换，而保持学到的特征的区别性。 
 
+浅层的外观不同的feature divergence较大，到深层就变小；而内容不同的feature divergence在浅层较小，在深层较大。所以浅层使用IN，深层使用BN，但是由于BN的巨大的作用，所以浅层也保留使用BN。
 
 IBN 模块：消除图像的风格信息，仅保留其内容信息
 

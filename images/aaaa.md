@@ -125,9 +125,31 @@ featuremap通道分组进行卷积，减少计算量。
 
 ![](https://pic2.zhimg.com/v2-e02ddf911b562e18f8b6edf527c8fb75_b.jpg)
 
-BiSENET
+###### BiSENET
 
 [论文阅读：BiSeNet: Bilateral Segmentation Network for Real-time Semantic Segmentation](https://www.jianshu.com/p/877a3f59f483?open_source=weibo_search)
+
+
+###### IBN-Net
+
+[批量标准化(BN)、实例标准化(IN)、特征标准化(FN)](https://blog.csdn.net/mzpmzk/article/details/80043076)
+[BN与IN的对比](https://www.zhihu.com/question/68730628/answer/277339783)
+
+batch norm是对一个batch里所有的图片的所有像素求均值和标准差。而instance norm是对单个图片的所有像素求均值和标准差。
+
+
+
+IBN 模块：消除图像的风格信息，仅保留其内容信息
+
+
+为了充分发挥IN和BN的各自优势，作者提出了IBN-Net的两条基本构建原则：1、为了防止网络在高层的语义判别性被破坏，IN只加在网络低层中；2、为了保留低层中的语义信息，网络低层中也保留BN。根据这两条原则，作者提出了如下两个IBN block：
+
+![](https://pic4.zhimg.com/80/v2-75e65684cf5ca97381dea76cef27ec45_hd.jpg)
+
+为何如此设计，作者给出了三点解释：（1）在ResNet的原论文中已经证明，identity path不加任何东西更有利于优化ResNet，所以IN不应该加在identity path中；（2）IN置于第一个normalization层，是为了保证与identity path的结果的一致性；（3）在第一个normalization层，IN和BN各占一半的通道数，一方面保证了不增加网络参数和计算量，另一方面也是为了在IN过滤掉反映外观变化的信息的同时用BN保留语义信息。此外，作者还展示了在实验中用到的其它几个IBN block，其核心思想依然符合上述两个设计原则，在此不再赘述。
+
+
+
 
 Enet论文阅读
 ======================================

@@ -30,7 +30,9 @@ python test_jingjian.py  --dataset_dir ./data --weights_path model/culane_lanene
 
 卷积运算方式,bottleneck设计,添加或删除不同的层
 
-shuffle net
+shuffle net V2
+
+![](https://img-blog.csdn.net/20180731224347374?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQzODAxNjU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 砍层
 

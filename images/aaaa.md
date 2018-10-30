@@ -40,7 +40,7 @@ mobilenet V2
 
 attention 机制
 
-
+IBN模块
 
 现在在做实验,将浅层的Enet转化为深层的encoder,用relu,效果还可以
 

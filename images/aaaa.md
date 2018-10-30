@@ -34,6 +34,21 @@ shuffle net V2
 
 ![](https://img-blog.csdn.net/20180731224347374?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQzODAxNjU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
+channel shuffle
+```
+def channel_shuffle(name, x, num_groups):
+    with tf.variable_scope(name) as scope:
+        n, h, w, c = x.shape.as_list()
+        x_reshaped = tf.reshape(x, [-1, h, w, num_groups, c // num_groups])
+        x_transposed = tf.transpose(x_reshaped, [0, 1, 2, 4, 3])
+        output = tf.reshape(x_transposed, [-1, h, w, c])
+        return output
+```
+depthwise_conv2d
+```
+tf.nn.depthwise_conv2d(input,filter,strides,padding,rate=None,name=None,data_format=None)
+```
+
 砍层
 
 

@@ -45,6 +45,10 @@ IBN模块
 
 BiSeNet
 
+shufflenet V2 
+
+时间降到20ms
+
 
 现在在做实验,将浅层的Enet转化为深层的encoder,用relu,效果还可以
 

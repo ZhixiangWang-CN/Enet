@@ -385,6 +385,8 @@ pool层(效果等同与步长为2的卷积)
 [卷积神经网络_（1）卷积层和池化层学习](https://www.cnblogs.com/zf-blog/p/6075286.html)
 
 
+[pooling层汇总](https://mp.weixin.qq.com/s/ISvHyUrXpxGTCMVib-ptnw)
+
 ![](https://images2015.cnblogs.com/blog/1062917/201611/1062917-20161117195428888-895158719.png)
 
 strides=[1, 1, 1, 1]参数解释:

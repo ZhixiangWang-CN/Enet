@@ -28,6 +28,7 @@ python test_jingjian.py  --dataset_dir ./data --weights_path model/culane_lanene
 
 3.尝试将bottleneck换成shufflenet（完成并测试中）：模型大小38MB,精简后11MB
 
+4.可加SENet（但是还没加，代码在下面找，因为在训练模型，没有GPU跑）
 
 下一步方向：
 ===========================================

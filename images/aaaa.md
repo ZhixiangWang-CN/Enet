@@ -74,6 +74,9 @@ IBN模块
 
 BiSeNet
 
+SENet
+
+
 shufflenet V2 
 
 时间降到20ms

@@ -43,6 +43,8 @@ python test_jingjian.py  --dataset_dir ./data --weights_path model/culane_lanene
 
 网络结构的优化:
 
+![](https://pic3.zhimg.com/v2-42a00ee136b4ebca8c56408858d74a16_b.jpg)
+
 卷积运算方式,bottleneck设计,添加或删除不同的层
 
 shuffle net V2

@@ -79,6 +79,10 @@ IBN模块
 
 BiSeNet
 
+![](http://5b0988e595225.cdn.sohucs.com/images/20180807/c46b74b61684414db59a8e8923232960.jpeg)
+
+简单来讲就是空间分支加上内容分支
+
 SENet
 
 

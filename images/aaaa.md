@@ -30,6 +30,8 @@ python test_jingjian.py  --dataset_dir ./data --weights_path model/culane_lanene
 
 4.可加SENet（但是还没加，代码在下面找，因为在训练模型，没有GPU跑）
 
+5.现在可能是因为学习率过小，导致模型精确度上升较慢
+
 下一步方向：
 ===========================================
 
@@ -251,7 +253,19 @@ IBN 模块：消除图像的风格信息，仅保留其内容信息
 
 为何如此设计，作者给出了三点解释：（1）在ResNet的原论文中已经证明，identity path不加任何东西更有利于优化ResNet，所以IN不应该加在identity path中；（2）IN置于第一个normalization层，是为了保证与identity path的结果的一致性；（3）在第一个normalization层，IN和BN各占一半的通道数，一方面保证了不增加网络参数和计算量，另一方面也是为了在IN过滤掉反映外观变化的信息的同时用BN保留语义信息。此外，作者还展示了在实验中用到的其它几个IBN block，其核心思想依然符合上述两个设计原则，在此不再赘述。
 
+###### Mobilenet
 
+核心就是先分层卷积，然后在用1* 1卷积进行深度卷积，减少运算量。
+
+![](https://pic1.zhimg.com/v2-2f939c1fbb6ba6a10a38b599223a002c_b.jpg)
+
+![](https://pic3.zhimg.com/v2-2fb755fbd24722bcb35f2d0d291cee22_b.jpg)
+
+###### MobileNet V2
+
+![](https://pic1.zhimg.com/80/v2-25b6c783dbb5412119200696f02f3018_hd.jpg)
+
+![](http://mmbiz.qpic.cn/mmbiz_png/a9UoojghtAECXTQ4RVhEVLLYcOuvmpyBhME3SBibkuxBJAUqj4yOzupiapPmEALebR0o4txC9kKTnHpib3Qpg4WVQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 
 Enet论文阅读

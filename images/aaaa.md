@@ -193,6 +193,8 @@ featuremap通道分组进行卷积，减少计算量。
 
 将featuremaps各通道赋予权重并训练
 
+SENet的Squeeze-Excitation模块在普通的卷积（单层卷积或复合卷积）由输入X得到输出U以后，对U的每个通道进行全局平均池化得到通道描述子（Squeeze），再利用两层FC得到每个通道的权重值，对U按通道进行重新加权得到最终输出（Excitation），这个过程称之为feature recalibration，通过引入attention重新加权，可以得到抑制无效特征，提升有效特征的权重，并很容易地和现有网络结合，提升现有网络性能，而计算量不会增加太多。
+
 ![](https://pic2.zhimg.com/v2-e02ddf911b562e18f8b6edf527c8fb75_b.jpg)
 
 ###### BiSENET

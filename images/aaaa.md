@@ -387,6 +387,16 @@ pool层(效果等同与步长为2的卷积)
 
 [pooling层汇总](https://mp.weixin.qq.com/s/ISvHyUrXpxGTCMVib-ptnw)
 
+
+pooling层作用，可以增加卷积感受野，减少参数。
+
+
+downsampling方法常用：Maxpooling + conv
+
+新方法：空洞卷积，好处，不会丢弃feature。
+
+
+
 ![](https://images2015.cnblogs.com/blog/1062917/201611/1062917-20161117195428888-895158719.png)
 
 strides=[1, 1, 1, 1]参数解释:
@@ -404,6 +414,26 @@ strides在官方定义中是一个一维具有四个元素的张量，其规定�
 
 ![](https://images2015.cnblogs.com/blog/1062917/201611/1062917-20161117211920029-1784506227.png)
 
+
+MaxPooling:
+
+Maxpooling 同时会传出一个最大值位置的矩阵，为了Maxunpooling的运算
+
+![](https://mmbiz.qpic.cn/mmbiz_png/a9UoojghtAGcVGUrTe7nibyyxaeLgwuCohbsSiamwSRGU75owtpyTczsHiakZYFHsYw6CibhflqGBh8doaiamXOtYIQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
+Average Pooling：
+
+将每个窗口计算其平均值，反向传播时均匀分配到每个元素。
+
+Global Average Pooling：
+
+[global pooling 详解](https://zhuanlan.zhihu.com/p/37683646)
+
+实现方法，就是用平均pooling但是把核的大小改成featuremap的长宽。
+
+简单讲：就是将featuremaps 每层求平均，这样减少参数量，可以防止过拟合。
+
+一般用在全连接层前
 
 unpooling:
 ---------------------------------

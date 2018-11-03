@@ -48,8 +48,11 @@ one shot 语义分割？？？？？？？
 
 [](https://blog.csdn.net/zdyueguanyun/article/details/78204802)
 
-OSVOS
+OSVOS？？？？？？？？？？？
 [项目代码](https://github.com/scaelles/OSVOS-TensorFlow)
+
+deeplab???????????????????
+
 网络结构的优化:
 
 ![](https://pic3.zhimg.com/v2-42a00ee136b4ebca8c56408858d74a16_b.jpg)

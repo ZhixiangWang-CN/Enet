@@ -43,6 +43,13 @@ python test_jingjian.py  --dataset_dir ./data --weights_path model/culane_lanene
 
 
 one shot 语义分割？？？？？？？
+
+[](http://www.vision.ee.ethz.ch/~cvlsegmentation/osvos/)
+
+[](https://blog.csdn.net/zdyueguanyun/article/details/78204802)
+
+OSVOS
+[项目代码](https://github.com/scaelles/OSVOS-TensorFlow)
 网络结构的优化:
 
 ![](https://pic3.zhimg.com/v2-42a00ee136b4ebca8c56408858d74a16_b.jpg)

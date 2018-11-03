@@ -41,6 +41,8 @@ python test_jingjian.py  --dataset_dir ./data --weights_path model/culane_lanene
 
 更准
 
+
+one shot 语义分割？？？？？？？
 网络结构的优化:
 
 ![](https://pic3.zhimg.com/v2-42a00ee136b4ebca8c56408858d74a16_b.jpg)

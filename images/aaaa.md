@@ -25,6 +25,8 @@ python test_jingjian.py  --dataset_dir ./data --weights_path model/culane_lanene
 ![](https://alioss.tower.im/712512%2Fc71c7518b95b4221a660d38a44b000df_large?Expires=1541035392&OSSAccessKeyId=NCnAvvXb096Ats57&Signature=UCOlJuQqqH6YkOu4iFuHS%2Bjli0E%3D&response-content-disposition=inline%3Bfilename%3D%22%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20181030173142.jpg%22&response-content-type=image%2Fjpeg)
 
 2.尝试找到合适的结构（未完成）
+   
+   a. 11-05-10-15-10 : E2 保留所有空洞卷积
 
 3.尝试将bottleneck换成shufflenet（完成并测试中）：模型大小38MB,精简后11MB
 

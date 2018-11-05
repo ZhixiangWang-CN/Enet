@@ -256,6 +256,7 @@ def Squeeze_excitation_layer(self, input_x, out_dim, ratio, layer_name):
 
 [论文阅读：BiSeNet: Bilateral Segmentation Network for Real-time Semantic Segmentation](https://www.jianshu.com/p/877a3f59f483?open_source=weibo_search)
 
+[论文](https://arxiv.org/abs/1808.00897v1)
 
 ###### IBN-Net
 

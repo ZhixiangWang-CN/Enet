@@ -189,6 +189,11 @@ ResNet的核心：
 
 ![](https://pic4.zhimg.com/80/v2-8bc91f4aa78e77119eaa960c93c0d3b0_hd.jpg)
 
+
+！【】（https://img-blog.csdn.net/20180608211237818?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0pOaW5nV2Vp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70）
+
+简单来讲：就是先用1* 1 融合各通道，然后用3 × 3 来解析单个channel
+
 这个模块就是先每个通道卷积再对所有通道的每个像素点卷积，简单来讲，就是先散开卷积，然后再深度卷积。
 
 

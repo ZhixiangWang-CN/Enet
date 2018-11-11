@@ -137,6 +137,9 @@ shufflenet V2
 
 研究资料:
 ----------------------
+
+[深度学习各种笔记](https://sgfin.github.io/learning-resources/)
+
 [CNN网络优化学习总结——从MobileNet到ShuffleNet](https://blog.csdn.net/sun_28/article/details/78170878)
 
 [各种卷积总结](https://github.com/vdumoulin/conv_arithmetic)

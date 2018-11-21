@@ -14,6 +14,9 @@ tensorboard --logdir=./tboard
 
 python train_jingjian.py --weights_path model/culane_lanenet/culane_lanenet_enet_2018-10-30-10-18-10.ckpt-3800
 
+python train_jingjian.py --weights_path model/culane_lanenet/culane_lanenet_enet_2018-11-10-11-11-17.ckpt-175600
+
+
 测试
 python test_jingjian.py  --dataset_dir ./data --weights_path model/culane_lanenet/culane_lanenet_enet_2018-10-29-16-18-40.ckpt-7000
 

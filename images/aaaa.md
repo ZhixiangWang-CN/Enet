@@ -17,6 +17,21 @@ python train_jingjian.py --weights_path model/culane_lanenet/culane_lanenet_enet
 测试
 python test_jingjian.py  --dataset_dir ./data --weights_path model/culane_lanenet/culane_lanenet_enet_2018-10-29-16-18-40.ckpt-7000
 
+
+BiSeNet
+=========================================
+
+训练 ：
+
+python train.py
+
+python train.py --continue_training True
+
+测试:
+
+python testwzx.py
+
+
 进展：
 ==========================================
 

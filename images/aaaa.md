@@ -84,6 +84,11 @@ b、当训练差不多时，再用收敛效果最好的优化函数：如adm
 更准
 
 
+GCN
+
+![](https://img-blog.csdn.net/2018031211101924?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYW50a2lsbGVyZmFybQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
+
 one shot 语义分割？？？？？？？
 
 [](http://www.vision.ee.ethz.ch/~cvlsegmentation/osvos/)
